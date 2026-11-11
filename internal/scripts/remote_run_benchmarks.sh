@@ -119,6 +119,7 @@ NC='\033[0m'
 declare -A BENCHMARK_PACKAGES
 BENCHMARK_PACKAGES["benchmark-publish-subscribe"]="--bench-all --iterations 100000"
 BENCHMARK_PACKAGES["benchmark-publish-subscribe-flatbuffer"]="--bench-all --iterations 100000"
+BENCHMARK_PACKAGES["benchmark-publish-subscribe-disconnect"]="--bench-all --iterations 1000"
 BENCHMARK_PACKAGES["benchmark-event"]="--bench-all --iterations 1000"
 BENCHMARK_PACKAGES["benchmark-request-response"]="--iterations 100000"
 BENCHMARK_PACKAGES["benchmark-queue"]="--iterations 100000"

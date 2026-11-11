@@ -2,9 +2,10 @@
 
 1. [Publish-Subscribe](#Publish-Subscribe)
 2. [FlatBuffers Publish-Subscribe](#FlatBuffers-Publish-Subscribe)
-3. [Request-Response](#Request-Response)
-4. [Event](#Event)
-5. [Queue](#Queue)
+3. [Publish-Subscribe Disconnect](#Publish-Subscribe-Disconnect)
+4. [Request-Response](#Request-Response)
+5. [Event](#Event)
+6. [Queue](#Queue)
 
 ## Publish-Subscribe
 
@@ -55,6 +56,26 @@ below:
 ```sh
 flatc -o benchmarks/publish-subscribe-flatbuffer/src --rust --schema --binary \
     benchmarks/publish-subscribe-flatbuffer/src/payload_data.fbs
+```
+
+## Publish-Subscribe Disconnect
+
+The benchmark quantifies the latency of the `send` that follows the disconnect
+of a `Subscriber`. This `send` updates the connections of the `Publisher` and
+reclaims all samples the disconnected `Subscriber` still held. In the setup, a
+`Subscriber` connects, receives a sample and disconnects again, followed by the
+measured `send`. A second `send` without any connection change is measured as
+reference. This process repeats `n` times for every allocation strategy of the
+`Publisher`, and the p50, p99 and maximum latency are subsequently reported.
+
+```sh
+cargo run --bin benchmark-publish-subscribe-disconnect --release -- --bench-all
+```
+
+For more benchmark configuration details, see
+
+```sh
+cargo run --bin benchmark-publish-subscribe-disconnect --release -- --help
 ```
 
 ## Request-Response

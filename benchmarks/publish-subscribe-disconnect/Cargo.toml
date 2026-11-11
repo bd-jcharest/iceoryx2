@@ -1,0 +1,21 @@
+[package]
+name = "benchmark-publish-subscribe-disconnect"
+description = "iceoryx2: [internal] benchmark for the send after a subscriber disconnected"
+categories = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+keywords = { workspace = true }
+license = { workspace = true }
+repository = { workspace = true }
+rust-version = { workspace = true }
+version = { workspace = true }
+
+[lints]
+workspace = true
+
+[dependencies]
+iceoryx2 = { workspace = true, features = ["std"] }
+iceoryx2-bb-loggers = { workspace = true, features = ["std", "console"]}
+iceoryx2-bb-posix = { workspace = true, features = ["std"] }
+
+clap = { workspace = true }
